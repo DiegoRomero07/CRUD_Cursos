@@ -1,0 +1,43 @@
+{% extends './layout.html' %}
+
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<h3><p>Ingreso de nuevos cursos</p></h3>
+
+<h1>Tabla de Cursos</h1>
+
+<table>
+    <thead>
+        <tr>
+          <th>Codigo Curso</th>
+          <th>Nombre Curso</th>
+          <th>No. de horas</th>
+          <th>Area de formación</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for curso in cursos %}
+        <tr>
+            <td> {{ curso.1 }}</td>
+            <td> {{ curso.2 }}</td>
+            <td> {{ curso.3 }}</td>
+            <td> {{ curso.4 }}</td>
+            <td><a href="/edit/{{curso.0}}">Edit</a></td>
+            <td><a href="/delete/{{curso.0}}">Delete</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+{% endblock %}
